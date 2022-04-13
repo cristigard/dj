@@ -1,0 +1,3 @@
+These are scripts that check for potentially dangerous security settings.
+Use it before deploy a site
+python manage.py check --deploy
