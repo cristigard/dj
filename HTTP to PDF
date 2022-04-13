@@ -1,3 +1,5 @@
+try this if yu like :https://django-easy-pdf.readthedocs.io/en/v0.2.0-dev1/api.html
+
 # from django_renderpdf.views import PDFView
 
 # class MyPDF(LoginRequiredMixin, PDFView):
