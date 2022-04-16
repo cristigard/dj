@@ -1,0 +1,11 @@
+#see SQL syntax from a ORM query
+data = Prodcut.objects.all()
+data.query -> return SQL syntax
+
+#how long a queryset take
+from django.bd import connections
+print(data)
+print(connection.queries)
+
+#OR
+data = Prodcut.objects.filter(name__startswith='ion') | Prodcut.objects.filter(name__startswith='vasille')
