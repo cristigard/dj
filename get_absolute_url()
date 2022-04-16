@@ -1,3 +1,4 @@
-get_delete_url()
-get_update_url()
+get_absolutee_url() - detail view  
+get_delete_url() - delete view  
+get_update_url() - update view
 ?
