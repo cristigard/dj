@@ -1,0 +1,14 @@
+models.py
+
+class PostManager(models.Manager):
+  def smaller(self,size):
+    return self.filter(number__lt=size)
+
+
+class Post(models.Model):
+  number = IntegerField(default=0)
+  objects = PostManager() 
+  
+---------------------------
+
+query = Post.objects.smaller(1) -> return a queryset filtered by smaller function
