@@ -8,4 +8,9 @@ print(data)
 print(connection.queries)
 
 #OR
-data = Prodcut.objects.filter(name__startswith='ion') | Prodcut.objects.filter(name__startswith='vasille')
+data = Workers.objects.filter(name__startswith='ion') | Prodcut.objects.filter(name__startswith='vasille') | etc
+
+#Q
+Q = contains
+~Q = NOT contains
+data = Workers.objects.filter(Q(name__startswith='ion') | (name__startswith='vasile') | Q(etc)...)
