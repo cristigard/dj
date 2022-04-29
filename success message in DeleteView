@@ -1,0 +1,13 @@
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
+
+class FileDeleteView(LoginRequiredMixin,SuccessMessageMixin, DeleteView):
+    model = Files
+    template_name = 'emp/delete-file.html'
+    context_object_name = 'file'
+    success_url = reverse_lazy('employee-list')
+    success_message = "File deleted successfully."
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super().delete(request, *args, **kwargs)
