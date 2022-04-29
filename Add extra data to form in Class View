@@ -1,0 +1,10 @@
+class CreateJournalView(LoginRequiredMixin, CreateView):
+	model = AccountingJournal
+	form_class = AccountingJournalForm
+	template_name = 'front/create-journal.html'
+	success_url = reverse_lazy('list')
+
+	#add user to form before save in db
+	def form_valid(self, form):
+		form.instance.author = self.request.user
+		return super().form_valid(form)
