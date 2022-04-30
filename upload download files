@@ -1,0 +1,25 @@
+from django.shortcuts import get_object_or_404
+from django.http import FileResponse
+import os
+
+def download_file(request,pk):
+    path = get_object_or_404(Files, pk=pk).file.url
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    file_path = BASE_DIR + path
+    response = FileResponse(open(file_path, 'rb'))
+    return response
+
+
+def upload_file(request,pk):
+    form = FilesForm()
+    employee = Employee.objects.get(pk=pk)
+    if request.method == "POST":
+        form = FilesForm(request.POST, request.FILES)
+        if form.is_valid():
+            file = form.cleaned_data.get('file')
+            Files.objects.create(file=file, employee=employee)
+            messages.success(request, f'File {file} uploaded successfully!')
+            return render(request, 'emp/upload-file.html',{"form":form, 'employee':employee})
+    else:
+        form = FilesForm()
+    return render(request, 'emp/upload-file.html',{'form':form, 'employee':employee})
