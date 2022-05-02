@@ -1,0 +1,12 @@
+#manage widget of form in LoginView
+class CustomLoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update(
+        {'class': "form-control",
+                    'style': 'max-width: 300px;'}
+        )
+        self.fields['password'].widget.attrs.update(
+        {'class': "form-control",
+                    'style': 'max-width: 300px;'}
+        )
