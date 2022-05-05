@@ -1,0 +1,12 @@
+from django.contrib.auth.models import User, Group
+
+group = Group(name="Author")
+group.save() # Create a sample group.
+user = User.objects.get(username="Johndoe") # get Some User.
+user.groups.add(group) # Add User 'Johndoe' to a Group.
+
+# check if user belongs to certain group.
+if user.groups.filter(name=group):
+  # do your stuff and give user access.
+else:
+  # redirect him
