@@ -1,0 +1,21 @@
+pip install django-ckeditor
+add to installed app
+in models:
+from ckeditor.fields import RichTextField
+class Group(models.Model):
+    name = RichTextField()
+    
+in templates where for is:
+{{form.media}}
+{{form}}
+
+in templates where is rendered:
+{{group|safe}}
+
+add style in style.css
+#cke_id_body{
+width:100% !important
+}
+
+
+
