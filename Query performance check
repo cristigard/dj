@@ -1,1 +1,3 @@
 print(Post.Objects.filter(titile__icontains="bla").explain(analyze = True)
+
+
