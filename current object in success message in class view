@@ -1,0 +1,2 @@
+success_message = "Manufacturer %(name)s updated successfully"
+name = model field
