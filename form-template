@@ -41,8 +41,7 @@ Registration form
   
   -----------------------------------------------------------------------------------------------------------------------
   
- <div class="container" style="padding-top: 40px; max-width: 500px;">
-    <h3>Login</h3>
+<h3>Login</h3>
     <p></p>
     <form method="POST">{%csrf_token%}
       <div style="background-color:azure; border-radius: 5px;padding: 10px;">
@@ -61,11 +60,11 @@ Registration form
       </div>
       <small style="color:red;">{{ form.non_field_errors }}</small>
     </div>
-    <small>Don't have an account?<a href="{% url 'register' %}"> Register</a></small>
-    <br><br>
-      <button type="submit" class="btn btn-outline-secondary">Login</button>
-    </form>
-</div>
+    <div><small>Don't have an account?<a href="{% url 'register' %}"> Register</a></small></div>
+    <div><small>Forget you password?<a href="{% url 'password_change' %}"> Change password</a></small></div>
+      <p></p><p></p>
+    <button type="submit" class="btn btn-outline-secondary btn-sm">Login</button>
+  </form>
   
   
   
