@@ -8,7 +8,8 @@ class ManufacturerListView(LoginRequiredMixin, GroupRequiredMixin, ListView):
     
     group_required = [u"manage_manufactures"] ->> group or groups(required atribute by GroupRequiredMixin
 
-    def check_membership(self, group):  ->> if not set return 403 by default(now return 404)
+    def check_membership(self, group):  ->> if not set return 403 by default(now return 404, better no one know that page is restricted)
+                                        ->> if not set GroupRequiredMixin check if user is in al leat 1 group, now check if is in all groups provided
         contains = []
         for name in group:
             if self.request.user.groups.filter(name = name).exists():
