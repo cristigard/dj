@@ -1,1 +1,21 @@
 https://django-braces.readthedocs.io/en/latest/access.html#
+
+from braces.views import GroupRequiredMixin
+class ManufacturerListView(LoginRequiredMixin, GroupRequiredMixin, ListView):
+    model = Manufacturer
+    template_name = 'knowledge/manufacturer-list.html'
+    context_object_name = "manufacturers"
+    
+    group_required = [u"manage_manufactures"] ->> group or groups(required atribute by GroupRequiredMixin
+
+    def check_membership(self, group):  ->> if not set return 403 by default(now return 404)
+        contains = []
+        for name in group:
+            if self.request.user.groups.filter(name = name).exists():
+                contains.append(True)
+            else:
+                contains.append(False)
+        if all(contains):
+            return True
+        else:
+            raise Http404
