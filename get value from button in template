@@ -1,0 +1,12 @@
+#template
+<form method="POST">
+     {% csrf_token %}
+     {% for year in all_years %
+     <input type="hidden" name="year" value="{{year}}">
+     <button class="btn btn-success btn-sm" type="submit" name={{year}}>{{year}}</button>
+     {% endfor %}
+</form>
+
+#view
+ if request.method == "POST":
+     year = request.POST.get("year")
