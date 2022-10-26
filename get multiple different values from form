@@ -1,0 +1,8 @@
+ #must create an form for every value
+ {% for year in all_years %}
+    <form method="POST">
+       {% csrf_token %}
+       <input type="hidden" name="year" value="{{year}}">
+       <button class="btn btn-success btn-sm" type="submit" >{{year}}</button>
+     </form>
+{% endfor %}
