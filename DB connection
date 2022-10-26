@@ -1,0 +1,4 @@
+#connection close by context manager
+with connection.cursor() as cursor:
+        cursor.execute("select * from table")
+        data = cursor.fetchall()
