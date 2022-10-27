@@ -1,0 +1,49 @@
+#one database
+
+views.py
+from django.db import connection  (take care at connection -> singular)
+
+with connection.cursor() as cursor:
+        cursor.execute("select date_part('year', data)::int from registru where cont_c = '6022'")
+        all_years = [year[0] for year in sorted(set(cursor.fetchall()))]
+        
+settings.py
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'new_db',
+        'USER': 'postgres',
+        'PASSWORD': 'QWErty123@',
+        'HOST': '192.168.111.124',
+        'PORT': '5432',
+               },
+            }
+---------------------------------------------------------------------------------------------------------
+#multiple database
+
+views.py
+from django.db import connections  (take care at connections -> plural)
+
+with connections['second_DB'].cursor() as cursor:
+        cursor.execute("select date_part('year', data)::int from registru where cont_c = '6022'")
+        all_years = [year[0] for year in sorted(set(cursor.fetchall()))]
+        
+settings.py
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'new_db',
+        'USER': 'postgres',
+        'PASSWORD': 'QWErty123@',
+        'HOST': '192.168.111.124',
+        'PORT': '5432',
+          },
+    'second_DB': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'saga_test',
+        'USER': 'postgres',
+        'PASSWORD': 'QWErty123@',
+        'HOST': '192.168.111.124',
+        'PORT': '5432',
+                },
+            }
