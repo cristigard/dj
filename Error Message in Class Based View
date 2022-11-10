@@ -1,0 +1,28 @@
+#view
+from django.contrib.messages.views import SuccessMessageMixin
+
+
+class SignUp(SuccessMessageMixin, CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'accounts/register.html'
+    success_message = "%(username)s was created successfully"
+
+   
+    def form_invalid(self, form):
+        context = self.get_context_data(form=form)
+        # messages.add_message(self.request, messages.INFO, 'Hello world.')
+        messages.add_message(self.request, messages.WARNING, 'Error!')
+        return self.render_to_response(context)
+        
+ #template
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="True">&times;</span>
+      </button>
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
