@@ -1,5 +1,14 @@
 Registration form
 
+form.field_name.label: Returns the label of the form field.
+form.field_name.id: Returns the id attribute of the form field.
+form.field_name.name: Returns the name attribute of the form field.
+form.field_name.value: Returns the value of the form field (i.e., the user's input).
+form.field_name.errors: Returns a list of error messages for the form field.
+form.field_name.help_text: Returns the help text for the form field.
+form.field_name.widget: Returns the widget object for the form field.
+Note that field_name should be replaced with the actual name of the field, for example username, password, etc.
+
 #add value="{{ form.username.value }}" in <input> to retain data if user insert wrong credentials
 
 <h3>Registration</h3>
