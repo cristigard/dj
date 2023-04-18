@@ -1,5 +1,7 @@
 Registration form
 
+#add value="{{ form.username.value }}" in <input> to retain data if user insert wrong credentials
+
 <h3>Registration</h3>
   <hr style="width: 100%;margin: 0px;">
   <p></p>
