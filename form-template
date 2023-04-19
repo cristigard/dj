@@ -7,6 +7,7 @@ form.field_name.value: Returns the value of the form field (i.e., the user's inp
 form.field_name.errors: Returns a list of error messages for the form field.
 form.field_name.help_text: Returns the help text for the form field.
 form.field_name.widget: Returns the widget object for the form field.
+
 Note that field_name should be replaced with the actual name of the field, for example username, password, etc.
 
 #add value="{{ form.username.value }}" in <input> to retain data if user insert wrong credentials
